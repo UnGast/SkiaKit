@@ -8,7 +8,7 @@
 import Foundation
 import SkiaKit
 
-struct TwoDPathSample: Sample {
+struct TwoDPathSample {
     static var title = "2D Path Effect"
     
     public func draw(canvas: Canvas, width: Int32, height: Int32) {
@@ -35,7 +35,7 @@ struct TwoDPathSample: Sample {
         let paint = Paint ()
     
         paint.pathEffect = PathEffect.make2DPath(matrix: &offsetMatrix, path: path)
-        paint.color = Colors.lightGray
+        paint.color = Colors.yellow
 
         // draw a rectangle
         //canvas.drawRect(Rect(width: fwidth + blockSize, height: fheight + blockSize), paint)

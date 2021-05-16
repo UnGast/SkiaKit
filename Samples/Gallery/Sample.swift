@@ -7,7 +7,6 @@
 
 import Foundation
 import SkiaKit
-import SwiftUI
 
 protocol Sample {
     init ()

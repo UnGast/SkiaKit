@@ -7,7 +7,6 @@
 
 import Foundation
 import SkiaKit
-import SwiftUI
 
 struct sampleXamagon : Sample {
     static var title = "Xamagon"
@@ -87,16 +86,5 @@ struct sampleXamagon : Sample {
 
         paint.color = Colors.white
         canvas.drawPath(path, paint)
-    }
-}
-
-struct Xamarin_Preview: PreviewProvider {
-    static var previews: some View {
-        VStack {
-            HStack {
-                Text ("")
-                SampleRender(sampleXamagon())
-            }
-        }
     }
 }

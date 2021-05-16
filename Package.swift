@@ -43,9 +43,7 @@ let sharedSources = [
 let dir = URL(fileURLWithPath: #file).deletingLastPathComponent().path
 
 let linkFlags: [LinkerSetting] = [
-	.unsafeFlags(["-L" + dir + "/native/osx"], .when(platforms:[.macOS])),
-	.unsafeFlags(["-F" + dir + "/native/ios"], .when(platforms:[.iOS])),
-	.unsafeFlags(["-F" + dir + "/native/tvos"], .when(platforms:[.tvOS])),
+	.unsafeFlags(["-L" + dir + "/native/linux"]),
 ]
 
 let package = Package(
@@ -56,32 +54,37 @@ let package = Package(
 	.tvOS(.v13),
     ],    
     products: [
-        .library(name: "SkiaKit", targets: ["SkiaKit"])
+        .library(name: "SkiaKit", targets: ["SkiaKit"]),
+				.executable(name: "Samples", targets: ["Samples"])
     ],
     targets: [
-        .target (
-		name: "SkiaKit", 
-		dependencies: ["CSkiaSharp"],
-		path: ".",
-		sources: sharedSources,
-		cSettings: [
-	    	    .headerSearchPath("Shared/Headers"),
-	    	    .headerSearchPath("SkiaKit/Apple", .when (platforms: [.macOS,.tvOS, .iOS])),
-	    	    .headerSearchPath("SkiaKit/macOS", .when (platforms: [.macOS])),
-	    	    .headerSearchPath("SkiaKit/iOS", .when (platforms: [.iOS])),
-	    	    .headerSearchPath("SkiaKit/tvOS", .when (platforms: [.tvOS])),
-		    .headerSearchPath("include")],
-		    linkerSettings: linkFlags
-		),
-	.target (
-		name: "CSkiaSharp",
-		path: "skiasharp",
-		sources: ["dummy.m"],
-		cSettings: [
-	    	    .headerSearchPath("../Shared/Headers"),
-	    	    .headerSearchPath("../SkiaKit/macOS", .when (platforms: [.macOS])),
-		    .headerSearchPath("include")]
-		)
+			.target (
+				name: "SkiaKit", 
+				dependencies: ["CSkia"]
+				/*cSettings: [
+								.headerSearchPath("Shared/Headers"),
+								.headerSearchPath("SkiaKit/Apple", .when (platforms: [.macOS,.tvOS, .iOS])),
+								.headerSearchPath("SkiaKit/macOS", .when (platforms: [.macOS])),
+								.headerSearchPath("SkiaKit/iOS", .when (platforms: [.iOS])),
+								.headerSearchPath("SkiaKit/tvOS", .when (platforms: [.tvOS])),
+						.headerSearchPath("include")],
+						linkerSettings: linkFlags*/
+			),
+			.target (
+				name: "CSkia"/*,
+				path: "skiasharp",
+				sources: ["dummy.m"],
+				cSettings: [
+								.headerSearchPath("../Shared/Headers"),
+								.headerSearchPath("../SkiaKit/macOS", .when (platforms: [.macOS])),
+						.headerSearchPath("include")]*/
+				),
+				.target(
+					name: "Samples",
+					dependencies: ["CSkia", "SkiaKit"],
+					path: "Samples/Gallery",
+					sources: ["main.swift", "2DPathSample.swift"]
+				)
     ]
 )
 
