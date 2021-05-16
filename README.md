@@ -1,5 +1,7 @@
 # SkiaKit
 
+to link: swift run -Xlinker -L../skia/out/Static -Xlinker -lskia -Xlinker -lstdc++ -Xlinker -lz Samples
+
 SkiaKit is a 2D Graphics Library for use with Swift.   It is powered by Google's
 [Skia](https://skia.org) graphics library, the same library that powers Google Chrome 
 and Android graphics.
