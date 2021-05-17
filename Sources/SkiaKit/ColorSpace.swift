@@ -23,6 +23,10 @@ public final class ColorSpace {
     {
         self.handle = handle
     }
+
+    public static var sRGB: ColorSpace {
+        ColorSpace(handle: sk_colorspace_new_srgb())
+    }
     
     deinit {
         sk_colorspace_unref(handle)

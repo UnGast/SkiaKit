@@ -29,7 +29,7 @@ public final class Surface {
     {
         self.handle = handle
     }
-    
+
     /**
      * Allocates raster `Surface`. `Canvas` returned by `Surface` draws directly into pixels.
      * `Surface` is returned if all parameters are valid.
@@ -102,6 +102,14 @@ public final class Surface {
         return make (pixmap.info, pixmap.pixels, pixmap.rowBytes, surfaceProps)
     }
     
+    public static func makeRenderTarget(context: GrContext, budgeted: Bool, cinfo: ImageInfo) -> Surface {
+        //return ToSurface(SkSurface::MakeRenderTarget(AsGrContext(context), (SkBudgeted)budgeted, AsImageInfo(cinfo), sampleCount, (GrSurfaceOrigin)origin, AsSurfaceProps(props), shouldCreateWithMips).release());
+        var nativeCInfo = cinfo.toNative()
+        return withUnsafePointer(to: nativeCInfo) {
+            Surface(handle: sk_surface_new_render_target(context.handle, budgeted, $0, 0, TOP_LEFT_GR_SURFACE_ORIGIN, nil, false))
+        }
+    }
+
     /// Returns `Surface` without backing pixels. Drawing to the `Canvas` returned from this  surface
     /// has no effect. Calling `makeImageSnapshot' on returned SkSurface returns `nil`.
     /// - Parameter width: one or greater
