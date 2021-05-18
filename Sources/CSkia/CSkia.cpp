@@ -2,14 +2,14 @@
 #include "include/gpu/GrContext.h"
 #include "include/gpu/gl/GrGLInterface.h"
 #include "include/core/SkSurface.h"
+//#include "include/gpu/vk/GrVkBackendContext.h"
 #include "include/core/SkColor.h"
 #include "sk_types.h"
 #include "sk_types_priv.h"
 #include "src/gpu/gl/GrGLUtil.h"
-#include "GL/gl.h"
 
 extern "C" {
-  sk_surface_t* makeSurface(int width, int height) {
+  sk_surface_t* makeSurface(int width, int height, int buffer) {
     auto interface = GrGLMakeNativeInterface();
 
     // setup contexts
@@ -18,8 +18,6 @@ extern "C" {
 
     // Wrap the frame buffer object attached to the screen in a Skia render target so Skia can
     // render to it
-    GrGLint buffer;
-    glGetIntegerv(GL_DRAW_FRAMEBUFFER_BINDING, &buffer);
     //GR_GL_GetIntegerv(interface.get(), 0x8CA6, &buffer);
     GrGLFramebufferInfo info;
     info.fFBOID = (GrGLuint) buffer;
@@ -56,4 +54,13 @@ extern "C" {
 
     return ToSurface(surface.get());
   }
+
+  /*sk_surface_t* makeSurfaceVulkan(int width, int height, VkInstance vkInstance, VkPhysicalDevice vkPhysDevice) {
+    sk_sp<GrVkBackendContext> vkBackendContext = new GrVkBackendContext();
+    vkBackendContext->fInstance = vkInstance;
+    vkBackendContext->fPhysicalDevice = vkPhysDevice;
+    //vkBackendContext->fInterface.reset(GrVkCreateInterface(instance, vkPhysDevice, extensionFlags);
+    sk_sp<GrContext> context = GrContext::MakeVulkan(vkBackendContext);
+    return 0;
+  }*/
 }
