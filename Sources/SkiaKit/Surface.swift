@@ -25,7 +25,7 @@ import CSkia
 public final class Surface {
     var handle: OpaquePointer
     
-    init (handle: OpaquePointer)
+    public init (handle: OpaquePointer)
     {
         self.handle = handle
     }

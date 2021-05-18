@@ -39,7 +39,7 @@ import CSkia
  * * `makeNway(width:height:)` - will create a passthrough n-way canvas.  Once created you can add canvas with `addCanvas`, and remove them with `removeCanvas`
  */
 public final class Canvas {
-    enum kind {
+    public enum kind {
         case doesNotOwn // we do not own the reference
         case owns       // regular canvas
         case empty      // we own an empty canvas
@@ -91,7 +91,7 @@ public final class Canvas {
         return Canvas (handle: sk_nway_canvas_new(width, height), owns: .nway)
     }
     
-    init (handle: OpaquePointer, owns: kind)
+    public init(handle: OpaquePointer, owns: kind)
     {
         self.handle = handle
         self.owns = owns
