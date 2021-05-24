@@ -71,7 +71,16 @@ let package = Package(
 						linkerSettings: linkFlags*/
 			),
 			.target (
-				name: "CSkia"/*,
+				name: "CSkia",
+				linkerSettings: [
+					.linkedLibrary("skia"),
+					.linkedLibrary("freetype"),
+					.linkedLibrary("fontconfig"),
+					.linkedLibrary("z"),
+					.linkedLibrary("stdc++"),
+					.linkedLibrary("GL")
+				]
+				/*,
 				path: "skiasharp",
 				sources: ["dummy.m"],
 				cSettings: [
