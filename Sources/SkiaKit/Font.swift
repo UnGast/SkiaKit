@@ -163,6 +163,12 @@ public final class Font {
         sk_font_get_pos(handle, &glyphs, Int32 (glyphs.count), &positions, &o)
         return positions
     }
+
+    public func measureText(_ text: String, paint: Paint) -> Rect {
+        var rect = Rect()
+        sk_font_measure_text(handle, text, text.utf8.count, UTF8_SK_TEXT_ENCODING, &rect, paint.handle)
+        return rect
+    }
     
  
     //sk_font_break_text
