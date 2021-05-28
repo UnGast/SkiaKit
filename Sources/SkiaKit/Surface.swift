@@ -110,6 +110,10 @@ public final class Surface {
         }
     }
 
+    public static func makeFromBackendRenderTarget(context: GrContext) {
+
+    }
+
     /// Returns `Surface` without backing pixels. Drawing to the `Canvas` returned from this  surface
     /// has no effect. Calling `makeImageSnapshot' on returned SkSurface returns `nil`.
     /// - Parameter width: one or greater

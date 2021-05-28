@@ -43,6 +43,6 @@
 #include "sk_vertices.h"
 #include "sk_xml.h"
 
-sk_surface_t* makeSurface(int width, int height, int buffer);
+sk_surface_t* makeSurface(int width, int height, int buffer, gr_context_t* _context);
 
 #endif /* SkiaKit_h */

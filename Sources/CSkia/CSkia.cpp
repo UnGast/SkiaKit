@@ -12,12 +12,12 @@
 #include "src/gpu/gl/GrGLUtil.h"
 
 extern "C" {
-  sk_surface_t* makeSurface(int width, int height, int buffer) {
+  sk_surface_t* makeSurface(int width, int height, int buffer, gr_context_t* _grContext) {
     auto interface = GrGLMakeNativeInterface();
 
     // setup contexts
-    sk_sp<GrContext> grContext(GrContext::MakeGL(interface));
-    SkASSERT(grContext);
+    //sk_sp<GrContext> grContext(GrContext::MakeGL(interface));
+    auto grContext = AsGrContext(_grContext);
 
     // Wrap the frame buffer object attached to the screen in a Skia render target so Skia can
     // render to it
@@ -49,7 +49,7 @@ extern "C" {
     //                      SkSurfaceProps::kUnknown_SkPixelGeometry);
     SkSurfaceProps *props;
 
-    sk_sp<SkSurface> surface(SkSurface::MakeFromBackendRenderTarget(grContext.get(), target,
+    sk_sp<SkSurface> surface(SkSurface::MakeFromBackendRenderTarget(grContext, target,
                                                                     kBottomLeft_GrSurfaceOrigin,
                                                                       colorType, nullptr, props));
 
