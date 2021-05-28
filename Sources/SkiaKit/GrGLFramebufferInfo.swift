@@ -13,6 +13,6 @@ public struct GrGLFramebufferInfo {
   }
 
   func toNative() -> gr_gl_framebufferinfo_t {
-    gr_gl_framebufferinfo_t(fFBOID, fFormat)
+    gr_gl_framebufferinfo_t(fFBOID: fFBOID, fFormat: fFormat)
   }
 }

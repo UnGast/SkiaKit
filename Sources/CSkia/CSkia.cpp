@@ -13,7 +13,7 @@
 
 extern "C" {
   sk_surface_t* makeSurface(int width, int height, int buffer, gr_context_t* _grContext) {
-    auto interface = GrGLMakeNativeInterface();
+    //auto interface = GrGLMakeNativeInterface();
 
     // setup contexts
     //sk_sp<GrContext> grContext(GrContext::MakeGL(interface));
