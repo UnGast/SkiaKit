@@ -110,8 +110,8 @@ public final class Surface {
         }
     }
 
-    public static func makeFromBackendRenderTarget(context: GrContext) {
-
+    public static func makeFromBackendRenderTarget(context: GrContext, target: GrBackendRenderTarget, origin: GrSurfaceOrigin, colorType: ColorType, colorSpace: ColorSpace?, props: SurfaceProperties) -> Surface {
+        Surface(handle: sk_surface_new_backend_render_target(context.handle, target.handle, origin.toNative(), colorType.toNative(), colorSpace?.handle, props.handle))
     }
 
     /// Returns `Surface` without backing pixels. Drawing to the `Canvas` returned from this  surface

@@ -6,10 +6,11 @@ render to it.
 */
 public struct GrGLFramebufferInfo {
   public var fFBOID: UInt32
-  public var fFormat: UInt32 = 0
+  public var fFormat: UInt32
 
-  public init(_ fFBOID: UInt32) {
+  public init(fFBOID: UInt32, fFormat: UInt32 = 0) {
     self.fFBOID = fFBOID
+    self.fFormat = fFormat
   }
 
   func toNative() -> gr_gl_framebufferinfo_t {
