@@ -4,7 +4,7 @@ to link: swift run -Xlinker -L../SkiaKit/native/linux -Xcc -I../skia/
 
 Skia Build From (exact commit): https://github.com/UnGast/skia/tree/88c91a587e99dc313c461cbeb4ddfa6b996075c5
 
-GN Build Args:
+GN Build Args Linux:
 
 ```
 is_official_build = true
@@ -23,6 +23,28 @@ skia_use_system_libwebp = false
 skia_use_vulkan = true
 
 extra_cflags = [ "-DHAVE_GETRANDOM" ]
+```
+
+GN Build Args MacOS:
+
+```
+is_debug=false
+is_official_build=true
+skia_use_system_expat=false
+skia_use_system_icu=false
+skia_use_system_libjpeg_turbo=false 
+skia_use_system_libpng=false
+skia_use_system_libwebp=false
+skia_use_system_zlib=false
+skia_use_sfntly=false
+skia_use_freetype=true
+skia_use_harfbuzz=false
+skia_pdf_subset_harfbuzz=false
+skia_use_system_freetype2=false
+skia_use_system_harfbuzz=false
+target_cpu="x64"
+extra_cflags=["-DHAVE_GETRANDOM", "-DHAVE_XLOCALE_H"]
+extra_cflags_cc=["-frtti"]
 ```
 
 SkiaKit is a 2D Graphics Library for use with Swift.   It is powered by Google's
