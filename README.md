@@ -1,5 +1,27 @@
 # SkiaKit
 
+## Installation
+
+SkiaKit is a wrapper library which maps Skia's c++ API to Swift via a bridging C API.
+
+SkiaKit contains no drawing logic by itself. It instead assumes that the C++ version of Skia was compiled already and can simply be linked during build, which will then make the actual implementation of Skia available.
+This means that you need a Skia binary and make it visible to the linker.
+
+1. Obtaining a Skia binary
+
+Option 1: Precompiled binary
+
+The easiest way to achieve this is to download a pre-built binary for your platform which you can find under [releases **TODO!**]().
+
+Option 2: Compile it yourself
+
+However I cannot provide a precompiled version for every possible platform. So you might have to compile a Skia binary yourself.
+
+<br>
+
+2. Making the binary visible to the linker
+
+
 to link: swift run -Xlinker -L../SkiaKit/native/linux -Xcc -I../skia/
 
 Skia Build From (exact commit): https://github.com/UnGast/skia/tree/88c91a587e99dc313c461cbeb4ddfa6b996075c5
