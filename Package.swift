@@ -3,11 +3,18 @@
 import Foundation
 import PackageDescription
 
-let dir = URL(fileURLWithPath: #file).deletingLastPathComponent().path
-
-let linkFlags: [LinkerSetting] = [
-	.unsafeFlags(["-L" + dir + "/native/linux"]),
+var linkerSettings: [LinkerSetting] = [
+	.linkedLibrary("skia"),
+    .linkedLibrary("freetype"),
+    .linkedLibrary("fontconfig"),
+    .linkedLibrary("z"),
 ]
+
+#if os(macOS)
+linkerSettings.append(.linkedLibrary("c++"))
+#else
+linkerSettings.append(.linkedLibrary("stdc++"))
+#endif
 
 let package = Package(
     name: "SkiaKit",
@@ -35,17 +42,7 @@ let package = Package(
 			),
 			.target (
 				name: "CSkia",
-				linkerSettings: [
-					.linkedLibrary("skia"),
-					.linkedLibrary("freetype"),
-					.linkedLibrary("fontconfig"),
-					.linkedLibrary("z"),
-					#if os(macOS)
-					.linkedLibrary("c++"),
-					#else
-					.linkedLibrary("stdc++"),
-					#endif
-				]
+				linkerSettings: linkerSettings
 				/*,
 				path: "skiasharp",
 				sources: ["dummy.m"],
