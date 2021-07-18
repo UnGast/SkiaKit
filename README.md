@@ -2,37 +2,36 @@
 
 ## Installation
 
-SkiaKit is a wrapper library which maps Skia's c++ API to Swift via a bridging C API.
+SkiaKit is a wrapper library which maps Skia's C++ API to Swift via an intermediate C API.
 
-SkiaKit contains no drawing logic by itself. It instead assumes that the C++ version of Skia was compiled already and can simply be linked during build, which will then make the actual implementation of Skia available.
-This means that you need a Skia binary and make it visible to the linker.
+SkiaKit does not contain the actual Skia code. Instead it is linked to a prebuilt binary. You have to obtain this binary and place it somewhere the linker can find it (usually a system directory like /usr/local/lib). 
 
-1. Obtaining a Skia binary
+### **1. Obtaining a Skia binary**
 
-Option 1: Precompiled binary
+#### **Option 1: Prebuilt binary**
 
-The easiest way to achieve this is to download a pre-built binary for your platform which you can find under [releases **TODO!**]().
+The easiest way to achieve this is to download a prebuilt binary for your platform which you can find at: [releases](https://github.com/UnGast/SkiaKit/releases).
 
-Option 2: Compile it yourself
-
-However I cannot provide a precompiled version for every possible platform. So you might have to compile a Skia binary yourself.
+If you found a prebuilt binary for your platform, continue with [step 2](#step2).
 
 <br>
 
-2. Making the binary visible to the linker
+#### **Option 2: Compile it yourself**
 
+I cannot provide a prebuilt version for every possible platform. So you might have to compile Skia yourself, which is not too hard.  
+Read the tutorial on [skia.org](https://skia.org/docs/user/build/) and build this exact commit of a modified Skia version:
 
-to link: swift run -Xlinker -L../SkiaKit/native/linux -Xcc -I../skia/
+`https://github.com/UnGast/skia/tree/88c91a587e99dc313c461cbeb4ddfa6b996075c5`
 
-Skia Build From (exact commit): https://github.com/UnGast/skia/tree/88c91a587e99dc313c461cbeb4ddfa6b996075c5
+I use the following build arguments, you might have to adjust them for your platform.
 
-GN Build Args Linux:
+<br>
+
+GN build args on Linux:
 
 ```
 is_official_build = true
 target_os = "linux"
-#cc = "/home/adrian/opt/swift/current/usr/bin/clang"
-#cxx = "/home/adrian/opt/swift/current/usr/bin/clang++"
 target_cpu = "x64"
 skia_use_piex = false
 skia_enable_tools = false
@@ -47,7 +46,9 @@ skia_use_vulkan = true
 extra_cflags = [ "-DHAVE_GETRANDOM" ]
 ```
 
-GN Build Args MacOS:
+<br>
+
+GN build args on MacOS:
 
 ```
 is_debug=false
@@ -69,37 +70,21 @@ extra_cflags=["-DHAVE_GETRANDOM", "-DHAVE_XLOCALE_H"]
 extra_cflags_cc=["-frtti"]
 ```
 
-SkiaKit is a 2D Graphics Library for use with Swift.   It is powered by Google's
-[Skia](https://skia.org) graphics library, the same library that powers Google Chrome 
-and Android graphics.
+<br>
 
-You can review the [API Documentation](https://migueldeicaza.github.io/SkiaKit/)
+<a name="step2"></a>
+### **2. Making the binary visible to the linker**
+Place your binary called `libskia.a` in `/usr/local/lib`.
 
-The Swift bindings are intended to be cross-platform, both to Apple platforms, and
-new platforms where Skia and Swift run.
+Now you should be able to use this package like a normal Swift package.
+
+<br>
+
+<br>
+
+**originally forked from [migueldeicaza/SkiaKit](https://github.com/migueldeicaza/SkiaKit)**
 
 This work uses extensive code from Microsoft's SkiaSharp bindings authoered by 
-Matthew Leibowitz and dozens of contributors.   SkiaSharp just happens to have
-a very advanced set of bridge APIs to the underlying Skia engine that does not 
-existin in the upstream Google Skia project.
-
-## Getting this to work locally
-
-You can either download and install the SkiaSharp.nuget package, or
-build your own local copy of Mono's Skia fork
-(https://github.com/mono/skia/tree/77049b872966dc300ed233fc6e3930eb21bac5e3
-from https://github.com/mono/skiasharp).
-
-The `download-payload.sh` script automates the download, but relies on Mono
-to be installed for extracting the payload from the DLLs (the iOS/tvOS frameworks
-live inside a Zip file called libSkiaSharp.framework inside a resource in the
-SkiaSharp.dll)
-
-```
-SkiaKit/iOS:
-	Copy the iOS directory libSkiaSharp.framework here
-SkiaKit/macOS:
-	Copy the file libSkiaSharp.dylib here
-SkiaKit/tvOS:
-	Copy the tvOS directory libSkiaSharp.framework here
-```
+Matthew Leibowitz and dozens of contributors. SkiaSharp just happens to have
+a very advanced set of bridge APIs to the underlying Skia engine that do not 
+exist in the upstream Google Skia project.
