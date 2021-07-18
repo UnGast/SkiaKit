@@ -1,6 +1,6 @@
-on: 
-  release:
-    types: [created]
+on: workflow_dispatch
+#release:
+# types: [created]
 name: Handle Release
 jobs:
   generate:
