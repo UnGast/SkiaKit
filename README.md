@@ -27,7 +27,7 @@ I use the following build arguments, you might have to adjust them for your plat
 
 <br>
 
-GN build args on Linux:
+GN build args on Ubuntu:
 
 ```
 is_official_build = true
