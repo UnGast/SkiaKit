@@ -10,10 +10,10 @@ jobs:
       - name: Checkout the repository
         uses: actions/checkout@master
       - name: Generate the artifacts
-        run: mkdir build && SKIA_BUILD_DIR=build ./tools/compile_skia_ubuntu.sh
+        run: export SKIA_BUILD_DIR=/build && sudo mkdir /build && sudo -E ./tools/compile_skia_ubuntu.sh
       - name: Upload the artifacts
         uses: skx/github-action-publish-binaries@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          args: 'build/out/Static/libskia.a'
+          args: '/build/out/Static/libskia.a'
