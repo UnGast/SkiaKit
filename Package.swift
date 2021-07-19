@@ -4,7 +4,7 @@ import Foundation
 import PackageDescription
 
 var linkerSettings: [LinkerSetting] = [
-	.linkedLibrary("skia"),
+	.linkedLibrary("skia_skiakit"),
     .linkedLibrary("freetype"),
     .linkedLibrary("fontconfig"),
     .linkedLibrary("z"),
