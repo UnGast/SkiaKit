@@ -1,22 +1,44 @@
 # SkiaKit
 
+**originally forked from [migueldeicaza/SkiaKit](https://github.com/migueldeicaza/SkiaKit)**
+
+<br>
+
 ## Installation
 
 SkiaKit is a wrapper library which maps Skia's C++ API to Swift via an intermediate C API.
 
-SkiaKit does not contain the actual Skia code. Instead it is linked to a prebuilt binary. You have to obtain this binary and place it somewhere the linker can find it (usually a system directory like /usr/local/lib). 
+SkiaKit does not contain the actual Skia code. Instead it is linked to a prebuilt binary. You have to obtain this binary and place it somewhere the linker can find it (usually a system directory like /usr/lib).  
+This is hopefully only a temporary requirement. When the Swift Package Manager supports shipping binaries with packages on all all platforms, manually installing Skia will not be necessary.
+
+<br>
 
 ### **1. Obtaining a Skia binary**
 
-#### **Option 1: Prebuilt binary**
+#### **Option 1: Using the download script**
 
-The easiest way to achieve this is to download a prebuilt binary for your platform which you can find at: [releases](https://github.com/UnGast/SkiaKit/releases).
+The easiest way to obtain a binary is by using the automatic download and installation script at [tools/install_skia.sh](https://github.com/UnGast/SkiaKit/blob/main/tools/install_skia.sh).
+
+Execute these lines in your terminal to run the script with correct parameters:
+
+```bash
+SKIAKIT_VERSION=<insert the exact version of SkiaKit package, e.g. 0.0.1>
+SKIAKIT_PLATFORM=<insert your platform, allowed values: linux, macos>
+curl https://github.com/UnGast/SkiaKit/blob/main/tools/install_skia.sh --output install_skia.sh && chmod +x install_skia.sh && sudo ./install_skia.sh $SKIAKIT_PLATFORM $SKIAKIT_VERSION
+rm install_skia.sh
+```
+
+<br>
+
+#### **Option 2: Manually downloading a prebuilt binary**
+
+You might find a binary for your platform at: [releases](https://github.com/UnGast/SkiaKit/releases) (look in assets section).
 
 If you found a prebuilt binary for your platform, continue with [step 2](#step2).
 
 <br>
 
-#### **Option 2: Compile it yourself**
+#### **Option 3: Compile it yourself**
 
 I cannot provide a prebuilt version for every possible platform. So you might have to compile Skia yourself, which is not too hard.  
 Read the tutorial on [skia.org](https://skia.org/docs/user/build/) and build this exact commit of a modified Skia version:
@@ -74,7 +96,8 @@ extra_cflags_cc=["-frtti"]
 
 <a name="step2"></a>
 ### **2. Making the binary visible to the linker**
-Place your binary called `libskia.a` in `/usr/local/lib`.
+Ensure that your binary is named `libskia_skiakit.a`, if it is not, simply rename it.
+Then place your binary in `/usr/lib`. This will require root priviliges.
 
 Now you should be able to use this package like a normal Swift package.
 
