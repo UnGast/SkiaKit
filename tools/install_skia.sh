@@ -1,21 +1,22 @@
 #!/bin/bash
-# argument 1: version
-# argument 2: platform
+# argument 1: platform
+# argument 2: version
 echo $1
 echo $2
 
 if [ -z $1 ]
 then
-echo "first argument 'version' missing"
+echo "first argument 'platform' missing"
 exit 1
 fi
 
 if [ -z $2 ]
 then
-echo "second argument 'platform' missing"
+echo "second argument 'version' missing"
 exit 1
 fi
 
-wget https://github.com/UnGast/SkiaKit/releases/download/$1/libskia_$2.a -o libskia_skiakit.a
-cp libskia_skiakit.a /usr/local/lib/libskia_skiakit.a
+DOWNLOAD_URL=https://github.com/UnGast/SkiaKit/releases/download/$2/libskia_$1.a
+curl -L $DOWNLOAD_URL --output libskia_skiakit.a
+cp libskia_skiakit.a /usr/lib/libskia_skiakit.a
 rm libskia_skiakit.a
