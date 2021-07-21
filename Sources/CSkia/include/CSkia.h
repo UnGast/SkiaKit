@@ -7,6 +7,7 @@
 
 #ifndef SkiaKit_h
 #define SkiaKit_h
+#include "sk_c_api_version.h"
 #include "sk_types.h"
 #include "gr_context.h"
 #include "sk_bitmap.h"

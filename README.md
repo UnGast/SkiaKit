@@ -43,7 +43,7 @@ If you found a prebuilt binary for your platform, continue with [step 2](#step2)
 I cannot provide a prebuilt version for every possible platform. So you might have to compile Skia yourself, which is not too hard.  
 Read the tutorial on [skia.org](https://skia.org/docs/user/build/) and build this exact commit of a modified Skia version:
 
-`https://github.com/UnGast/skia/tree/88c91a587e99dc313c461cbeb4ddfa6b996075c5`
+`https://github.com/UnGast/skia/tree/d22bd8f1c52c3181e63561f88dfbe4cb4d891d66`
 
 I use the following build arguments, you might have to adjust them for your platform.
 

@@ -63,8 +63,16 @@ public final class Canvas {
      */
     public init (_ bitmap : Bitmap)
     {
+        SkiaCApiVersion.validateFail()
         handle = sk_canvas_new_from_bitmap(bitmap.handle)
         owns = .owns
+    }
+
+    public init(handle: OpaquePointer, owns: kind)
+    {
+        SkiaCApiVersion.validateFail()
+        self.handle = handle
+        self.owns = owns
     }
     
     /**
@@ -91,12 +99,6 @@ public final class Canvas {
         return Canvas (handle: sk_nway_canvas_new(width, height), owns: .nway)
     }
     
-    public init(handle: OpaquePointer, owns: kind)
-    {
-        self.handle = handle
-        self.owns = owns
-    }
-
     deinit {
         switch owns {
         case .owns:
