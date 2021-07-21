@@ -24,7 +24,7 @@ Execute these lines in your terminal to run the script with correct parameters:
 ```bash
 SKIAKIT_VERSION=<insert the exact version of SkiaKit package, e.g. 0.0.1>
 SKIAKIT_PLATFORM=<insert your platform, allowed values: linux, macos>
-curl https://github.com/UnGast/SkiaKit/blob/main/tools/install_skia.sh --output install_skia.sh && chmod +x install_skia.sh && sudo ./install_skia.sh $SKIAKIT_PLATFORM $SKIAKIT_VERSION
+curl -L https://raw.githubusercontent.com/UnGast/SkiaKit/main/tools/install_skia.sh --output install_skia.sh && chmod +x install_skia.sh && sudo ./install_skia.sh $SKIAKIT_PLATFORM $SKIAKIT_VERSION
 rm install_skia.sh
 ```
 
