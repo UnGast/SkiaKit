@@ -18,7 +18,7 @@ public typealias FontHinting = sk_font_hinting_t
 /// Describes how pixel bits encode color. A pixel may be an alpha mask, a grayscale, Red Green and Blue (RGB), or
 /// Alpha, Red, Green and Blue (ARGB)
 /// 
-public enum ColorType : UInt32 {
+public enum ColorType : Int32 {
     /// If set, encoding format and size is unknown.
     case unknown = 0
     /// Stores 8-bit byte pixel encoding that represents transparency. Value of zero is completely transparent; a value of 255 is completely opaque.
@@ -63,7 +63,7 @@ public enum ColorType : UInt32 {
 /// value is the original RGB multiplied by alpha. Premultiplied color
 /// components improve performance.
 ///
-public enum AlphaType : UInt32 {
+public enum AlphaType : Int32 {
     /// Uninitialized
     case unknown = 0
     /// pixel is opaque
@@ -86,7 +86,7 @@ public enum AlphaType : UInt32 {
 
 
 /// Blending modes for compositing digital images.   These are an implementation of the Porter Duff blending modes
-public enum BlendMode : UInt32 {
+public enum BlendMode : Int32 {
     /// Replaces destination with Alpha and Color components set to zero; a fully transparent pixel (operation: [0, 0])
     case clear = 0
     /// Replaces destination with source. Destination alpha and color component values are ignored.
@@ -158,7 +158,7 @@ public enum BlendMode : UInt32 {
 }
 
 /// Controls how much filtering to be done when scaling/transforming complex colors
-public enum FilterQuality : UInt32
+public enum FilterQuality : Int32
 {
     /// fastest but lowest quality, typically nearest-neighbor
     case none = 0
@@ -184,7 +184,7 @@ public enum FilterQuality : UInt32
 GPU SkImage and SkSurfaces can be stored such that (0, 0) in texture space may correspond
 to either the top-left or bottom-left content pixel.
 */
-public enum GrSurfaceOrigin : UInt32
+public enum GrSurfaceOrigin : Int32
 {
     case topLeft = 0
     case bottomLeft
@@ -216,7 +216,7 @@ public enum GrSurfaceOrigin : UInt32
 ///
 /// Align defaults to `.left`.
 ///
-public enum TextAlign : UInt32 {
+public enum TextAlign : Int32 {
     /// Leaves the glyph at the position computed by the font offset by the text position.
     case left = 0
     /// Moves the glyph half its width if flags has `.verticalText` clear, and half its height if flags has `.verticalText` set.
@@ -254,7 +254,7 @@ public enum TextAlign : UInt32 {
 ///
 /// TextEncoding is set to `.utf8` by default.
 ///
-public enum TextEncoding : UInt32 {
+public enum TextEncoding : Int32 {
     /// Uses bytes to represent UTF-8 or ASCII.
     case utf8  = 0
     /// Uses two byte words to represent most of Unicode.
@@ -275,7 +275,7 @@ public enum TextEncoding : UInt32 {
     }
 }
 
-public enum ClipOperation : UInt32 {
+public enum ClipOperation : Int32 {
     case difference = 0
     case intersect = 1
     
@@ -291,7 +291,7 @@ public enum ClipOperation : UInt32 {
 }
 
 /// Selects if an array of points are drawn as discrete points, as lines, or as an open polygon.
-public enum PointMode : UInt32 {
+public enum PointMode : Int32 {
     /// Draw each point separately.
     case points = 0
     /// Draw each pair of points as a line segment.
@@ -311,7 +311,7 @@ public enum PointMode : UInt32 {
 }
 
 /// Enum describing format of encoded data.
-public enum EncodedImageFormat : UInt32 {
+public enum EncodedImageFormat : Int32 {
     case bmp = 0
     case gif
     case ico
@@ -398,7 +398,7 @@ public enum FontStyleWidth : Int32 {
 }
 
 /// Font slants for use with Typeface.
-public enum FontStyleSlant : UInt32 {
+public enum FontStyleSlant : Int32 {
     /// The upright/normal font slant.
     case upright = 0
     /// The italic font slant, in which the slanted characters appear as they were designed.
@@ -418,7 +418,7 @@ public enum FontStyleSlant : UInt32 {
 }
 
 /// Indications on how the shader should handle drawing outside the original bounds.
-public enum ShaderTileMode : UInt32 {
+public enum ShaderTileMode : Int32 {
     /// Replicate the edge color if the shader draws outside of its original bounds.
     case clamp = 0
     /// Repeat the shader's image horizontally and vertically.
@@ -439,7 +439,7 @@ public enum ShaderTileMode : UInt32 {
     }
 }
 
-public enum SKSurfacePropsFlags : UInt32 {
+public enum SKSurfacePropsFlags : Int32 {
     case none = 0
     case useDeviceIndependentFonts = 1
 }
@@ -449,7 +449,7 @@ public enum SKSurfacePropsFlags : UInt32 {
 /// pixels are meant to be "portable" and/or transformed before showing (e.g. rotated, scaled)
 /// then use `.unknown`
 ///
-public enum PixelGeometry : UInt32 {
+public enum PixelGeometry : Int32 {
     case unknown = 0
     case rgbHorizontal
     case bgrHorizontal
@@ -468,7 +468,7 @@ public enum PixelGeometry : UInt32 {
 }
 
 /// The logical operations that can be performed when combining two regions.
-public enum RegionOperation: UInt32 {
+public enum RegionOperation: Int32 {
     /// subtract the op region from the first region
     case difference = 0
     /// intersect the two regions

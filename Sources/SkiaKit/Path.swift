@@ -553,10 +553,10 @@ public final class Path {
      * - Parameter start: index of initial point of Rect
      */
     @discardableResult
-    public func addRect (_ rect: Rect, direction: Direction = .clockwise, start: UInt32) -> Path
+    public func addRect (_ rect: Rect, direction: Direction = .clockwise, start: Int32) -> Path
     {
         var r = rect
-        sk_path_add_rect_start(handle, &r, direction.toNative(), start)
+        sk_path_add_rect_start(handle, &r, direction.toNative(), UInt32(start))
         return self
     }
     
@@ -597,9 +597,9 @@ public final class Path {
      * - Parameter start: index of initial point of RRect
      */
     @discardableResult
-    public func addRoundedRect (_ roundedRect: RoundRect, direction: Direction = .clockwise, start: UInt32) -> Path
+    public func addRoundedRect (_ roundedRect: RoundRect, direction: Direction = .clockwise, start: Int32) -> Path
     {
-        sk_path_add_rrect_start(handle, roundedRect.handle, direction.toNative(), start)
+        sk_path_add_rrect_start(handle, roundedRect.handle, direction.toNative(), UInt32(start))
         return self
     }
     
@@ -757,7 +757,7 @@ public final class Path {
     
     /// Four oval parts with radii (rx, ry) start at last SkPath SkPoint and ends at (x, y).
     /// Size and Direction select one of the four oval parts.
-    public enum Size : UInt32 {
+    public enum Size : Int32 {
         // smaller of arc pair
         case small = 0
         // larger of arc pair
@@ -785,7 +785,7 @@ public final class Path {
     /// `.inverseEvenOdd` fills where the number of contour edges is even.
     ///
     ///
-    public enum FillType : UInt32
+    public enum FillType : Int32
     {
         /// Specifies fill as area is enclosed by a non-zero sum of contour directions
         case winding = 0
@@ -820,7 +820,7 @@ public final class Path {
     /// f needed by destination `Surface`.
     ///
     ///
-    public enum Convexity : UInt32 {
+    public enum Convexity : Int32 {
         /// Indicates Convexity has not been determined.
         case unknown = 0
         /// Path has one contour made of a simple geometry without indentations.
@@ -865,7 +865,7 @@ public final class Path {
     /// `.clockwise` travel clockwise; the same added with `.counterclockwise`
     /// travel counterclockwise.
     ///
-    public enum Direction : UInt32 {
+    public enum Direction : Int32 {
         case clockwise = 0
         case counterClockwise = 1
         
@@ -881,7 +881,7 @@ public final class Path {
     }
 
     /// The logical operations that can be performed when combining two paths
-    public enum Op : UInt32 {
+    public enum Op : Int32 {
         /// subtract the op path from the first path
         case difference = 0
         /// intersect the two paths

@@ -27,7 +27,7 @@ public final class Paint {
     /// Use `.strokeAndFill` to avoid hitting the same pixels twice with a stroke draw and
     /// a fill draw.
     ///
-    public enum Style : UInt32 {
+    public enum Style : Int32 {
         /// set to fill geometry
         case fill = 0
         /// set to stroke geometry
@@ -59,7 +59,7 @@ public final class Paint {
     /// not contain the actual join. For instance, a fill path constructed with round joins does
     /// not necessarily include circles at each connected segment.
     ///
-    public enum StrokeJoin : UInt32 {
+    public enum StrokeJoin : Int32 {
         /// extends to miter limit
         case miter = 0
         /// adds circle
@@ -87,7 +87,7 @@ public final class Paint {
 //    / as the font engine.
 //    /
 //    /
-//    public enum Hinting : UInt32 {
+//    public enum Hinting : Int32 {
 //        /// Leaves glyph outlines unchanged from their native representation.
 //        /// With FreeType, this is equivalent to the FT_LOAD_NO_HINTING
 //        /// bit-field constant supplied to FT_Load_Glyph, which indicates that the vector
@@ -124,7 +124,7 @@ public final class Paint {
 //    }
 
     /// Cap draws at the beginning and end of an open path contour.
-    public enum StrokeCap : UInt32 {
+    public enum StrokeCap : Int32 {
         /// no stroke extension - the default stroke value
         case butt = 0
         /// adds circle
