@@ -341,7 +341,7 @@ public final class Image {
     /// `Image` pixels may not be cached if memory requirements are too large or
     /// pixels are not accessible.
     ///
-    public enum CachingHint : Int32 {
+    public enum CachingHint : UInt32 {
         /// allows internally caching decoded and copied pixels
         case allow = 0
         /// disallows internally caching decoded and copied pixels

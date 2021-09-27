@@ -18,7 +18,7 @@ public typealias FontHinting = sk_font_hinting_t
 /// Describes how pixel bits encode color. A pixel may be an alpha mask, a grayscale, Red Green and Blue (RGB), or
 /// Alpha, Red, Green and Blue (ARGB)
 /// 
-public enum ColorType : Int32 {
+public enum ColorType : UInt32 {
     /// If set, encoding format and size is unknown.
     case unknown = 0
     /// Stores 8-bit byte pixel encoding that represents transparency. Value of zero is completely transparent; a value of 255 is completely opaque.
@@ -44,12 +44,12 @@ public enum ColorType : Int32 {
     
     internal func toNative () -> sk_colortype_t
     {
-        return sk_colortype_t.init(rawValue)
+        return sk_colortype_t.init(sk_colortype_t.RawValue(rawValue))
     }
     
     internal static func fromNative (_ x: sk_colortype_t) -> ColorType
     {
-        return ColorType.init(rawValue: x.rawValue)!
+        return ColorType.init(rawValue: ColorType.RawValue(x.rawValue))!
     }
 }
 
@@ -63,7 +63,7 @@ public enum ColorType : Int32 {
 /// value is the original RGB multiplied by alpha. Premultiplied color
 /// components improve performance.
 ///
-public enum AlphaType : Int32 {
+public enum AlphaType : UInt32 {
     /// Uninitialized
     case unknown = 0
     /// pixel is opaque
@@ -75,18 +75,18 @@ public enum AlphaType : Int32 {
     
     internal func toNative () -> sk_alphatype_t
     {
-        return sk_alphatype_t.init(rawValue)
+        return sk_alphatype_t.init(sk_alphatype_t.RawValue(rawValue))
     }
     
     internal static func fromNative (_ x: sk_alphatype_t) -> AlphaType
     {
-        return AlphaType.init(rawValue: x.rawValue)!
+        return AlphaType.init(rawValue: AlphaType.RawValue(x.rawValue))!
     }
 }
 
 
 /// Blending modes for compositing digital images.   These are an implementation of the Porter Duff blending modes
-public enum BlendMode : Int32 {
+public enum BlendMode : UInt32 {
     /// Replaces destination with Alpha and Color components set to zero; a fully transparent pixel (operation: [0, 0])
     case clear = 0
     /// Replaces destination with source. Destination alpha and color component values are ignored.
@@ -148,17 +148,17 @@ public enum BlendMode : Int32 {
     
     internal func toNative () -> sk_blendmode_t
     {
-        return sk_blendmode_t.init(rawValue)
+        return sk_blendmode_t.init(sk_blendmode_t.RawValue(rawValue))
     }
     
     internal static func fromNative (_ x: sk_blendmode_t) -> BlendMode
     {
-        return BlendMode.init(rawValue: x.rawValue)!
+        return BlendMode.init(rawValue: BlendMode.RawValue(x.rawValue))!
     }
 }
 
 /// Controls how much filtering to be done when scaling/transforming complex colors
-public enum FilterQuality : Int32
+public enum FilterQuality : UInt32
 {
     /// fastest but lowest quality, typically nearest-neighbor
     case none = 0
@@ -171,12 +171,12 @@ public enum FilterQuality : Int32
 
     internal func toNative () -> sk_filter_quality_t
     {
-        return sk_filter_quality_t.init(rawValue)
+        return sk_filter_quality_t.init(sk_filter_quality_t.RawValue(rawValue))
     }
     
     internal static func fromNative (_ x: sk_filter_quality_t) -> FilterQuality
     {
-        return FilterQuality.init(rawValue: x.rawValue)!
+        return FilterQuality.init(rawValue: FilterQuality.RawValue(x.rawValue))!
     }
 }
 
@@ -184,17 +184,17 @@ public enum FilterQuality : Int32
 GPU SkImage and SkSurfaces can be stored such that (0, 0) in texture space may correspond
 to either the top-left or bottom-left content pixel.
 */
-public enum GrSurfaceOrigin : Int32
+public enum GrSurfaceOrigin : UInt32
 {
     case topLeft = 0
     case bottomLeft
 
     internal func toNative () -> gr_surfaceorigin_t {
-        gr_surfaceorigin_t.init(rawValue)
+        gr_surfaceorigin_t.init(gr_surfaceorigin_t.RawValue(rawValue))
     }
 
     internal static func fromNative(_ x: gr_surfaceorigin_t) -> GrSurfaceOrigin {
-        GrSurfaceOrigin.init(rawValue: x.rawValue)!
+        GrSurfaceOrigin.init(rawValue: GrSurfaceOrigin.RawValue(x.rawValue))!
     }
 }
 
@@ -216,7 +216,7 @@ public enum GrSurfaceOrigin : Int32
 ///
 /// Align defaults to `.left`.
 ///
-public enum TextAlign : Int32 {
+public enum TextAlign : UInt32 {
     /// Leaves the glyph at the position computed by the font offset by the text position.
     case left = 0
     /// Moves the glyph half its width if flags has `.verticalText` clear, and half its height if flags has `.verticalText` set.
@@ -226,12 +226,12 @@ public enum TextAlign : Int32 {
     
     internal func toNative () -> sk_text_align_t
     {
-        return sk_text_align_t.init(rawValue)
+        return sk_text_align_t.init(sk_text_align_t.RawValue(rawValue))
     }
     
     internal static func fromNative (_ x: sk_text_align_t) -> TextAlign
     {
-        return TextAlign.init(rawValue: x.rawValue)!
+        return TextAlign.init(rawValue: TextAlign.RawValue(x.rawValue))!
     }
 }
 
@@ -254,7 +254,7 @@ public enum TextAlign : Int32 {
 ///
 /// TextEncoding is set to `.utf8` by default.
 ///
-public enum TextEncoding : Int32 {
+public enum TextEncoding : UInt32 {
     /// Uses bytes to represent UTF-8 or ASCII.
     case utf8  = 0
     /// Uses two byte words to represent most of Unicode.
@@ -266,16 +266,16 @@ public enum TextEncoding : Int32 {
 
     internal func toNative () -> sk_text_encoding_t
     {
-        return sk_text_encoding_t.init(rawValue)
+        return sk_text_encoding_t.init(sk_text_encoding_t.RawValue(rawValue))
     }
     
     internal static func fromNative (_ x: sk_text_encoding_t) -> TextEncoding
     {
-        return TextEncoding.init(rawValue: x.rawValue)!
+        return TextEncoding.init(rawValue: TextEncoding.RawValue(x.rawValue))!
     }
 }
 
-public enum ClipOperation : Int32 {
+public enum ClipOperation : UInt32 {
     case difference = 0
     case intersect = 1
     
@@ -291,7 +291,7 @@ public enum ClipOperation : Int32 {
 }
 
 /// Selects if an array of points are drawn as discrete points, as lines, or as an open polygon.
-public enum PointMode : Int32 {
+public enum PointMode : UInt32 {
     /// Draw each point separately.
     case points = 0
     /// Draw each pair of points as a line segment.
@@ -301,17 +301,17 @@ public enum PointMode : Int32 {
     
     internal func toNative () -> sk_point_mode_t
     {
-        return sk_point_mode_t.init(rawValue)
+        return sk_point_mode_t.init(sk_point_mode_t.RawValue(rawValue))
     }
     
     internal static func fromNative (_ x: sk_point_mode_t) -> PointMode
     {
-        return PointMode.init(rawValue: x.rawValue)!
+        return PointMode.init(rawValue: PointMode.RawValue(x.rawValue))!
     }
 }
 
 /// Enum describing format of encoded data.
-public enum EncodedImageFormat : Int32 {
+public enum EncodedImageFormat : UInt32 {
     case bmp = 0
     case gif
     case ico
@@ -327,12 +327,12 @@ public enum EncodedImageFormat : Int32 {
 
     internal func toNative () -> sk_encoded_image_format_t
     {
-        return sk_encoded_image_format_t(rawValue: rawValue)
+        return sk_encoded_image_format_t(rawValue: sk_encoded_image_format_t.RawValue(rawValue))
     }
     
     internal static func fromNative (_ x: sk_encoded_image_format_t) -> EncodedImageFormat
     {
-        return EncodedImageFormat.init (rawValue: x.rawValue)!
+        return EncodedImageFormat.init (rawValue: EncodedImageFormat.RawValue(x.rawValue))!
     }
 
 }
@@ -349,7 +349,7 @@ public enum EncodedImageFormat : Int32 {
 ///
 /// The numerical value of the enumeration is the `usWeightClass`
 ///
-public enum FontStyleWeight : Int32 {
+public enum FontStyleWeight : UInt32 {
     /// Invisible weight
     case invisible   =   0
     /// Specifies a "Thin" font weight.
@@ -376,7 +376,7 @@ public enum FontStyleWeight : Int32 {
 
 
 /// Predefined font widths for use with Typeface, these values match the `usWidthClass` from the OpenType specification.   These are numbers from 1 to 9, lower numbers represent narrower widths, higher numbers indicate wider widths.
-public enum FontStyleWidth : Int32 {
+public enum FontStyleWidth : UInt32 {
     /// 50% width of normal, `usWidthClass` = 1
     case ultraCondensed   = 1
     /// 62.5% width of normal, `usWidthClass` = 2
@@ -398,7 +398,7 @@ public enum FontStyleWidth : Int32 {
 }
 
 /// Font slants for use with Typeface.
-public enum FontStyleSlant : Int32 {
+public enum FontStyleSlant : UInt32 {
     /// The upright/normal font slant.
     case upright = 0
     /// The italic font slant, in which the slanted characters appear as they were designed.
@@ -408,17 +408,17 @@ public enum FontStyleSlant : Int32 {
     
     internal func toNative () -> sk_font_style_slant_t
     {
-        return sk_font_style_slant_t(rawValue: rawValue)
+        return sk_font_style_slant_t(rawValue: sk_font_style_slant_t.RawValue(rawValue))
     }
     
     internal static func fromNative (_ x: sk_font_style_slant_t) -> FontStyleSlant
     {
-        return FontStyleSlant.init (rawValue: x.rawValue)!
+        return FontStyleSlant.init (rawValue: FontStyleSlant.RawValue(x.rawValue))!
     }
 }
 
 /// Indications on how the shader should handle drawing outside the original bounds.
-public enum ShaderTileMode : Int32 {
+public enum ShaderTileMode : UInt32 {
     /// Replicate the edge color if the shader draws outside of its original bounds.
     case clamp = 0
     /// Repeat the shader's image horizontally and vertically.
@@ -430,16 +430,16 @@ public enum ShaderTileMode : Int32 {
     
     internal func toNative () -> sk_shader_tilemode_t
     {
-        return sk_shader_tilemode_t(rawValue: rawValue)
+        return sk_shader_tilemode_t(rawValue: sk_shader_tilemode_t.RawValue(rawValue))
     }
     
     internal static func fromNative (_ x: sk_shader_tilemode_t) -> ShaderTileMode
     {
-        return ShaderTileMode.init (rawValue: x.rawValue)!
+        return ShaderTileMode.init (rawValue: ShaderTileMode.RawValue(x.rawValue))!
     }
 }
 
-public enum SKSurfacePropsFlags : Int32 {
+public enum SKSurfacePropsFlags : UInt32 {
     case none = 0
     case useDeviceIndependentFonts = 1
 }
@@ -449,7 +449,7 @@ public enum SKSurfacePropsFlags : Int32 {
 /// pixels are meant to be "portable" and/or transformed before showing (e.g. rotated, scaled)
 /// then use `.unknown`
 ///
-public enum PixelGeometry : Int32 {
+public enum PixelGeometry : UInt32 {
     case unknown = 0
     case rgbHorizontal
     case bgrHorizontal
@@ -458,17 +458,17 @@ public enum PixelGeometry : Int32 {
     
     internal func toNative () -> sk_pixelgeometry_t
     {
-        return sk_pixelgeometry_t(rawValue: rawValue)
+        return sk_pixelgeometry_t(rawValue: sk_pixelgeometry_t.RawValue(rawValue))
     }
     
     internal static func fromNative (_ x: sk_pixelgeometry_t) -> PixelGeometry
     {
-        return PixelGeometry.init (rawValue: x.rawValue)!
+        return PixelGeometry.init (rawValue: sk_pixelgeometry_t.RawValue(x.rawValue))!
     }
 }
 
 /// The logical operations that can be performed when combining two regions.
-public enum RegionOperation: Int32 {
+public enum RegionOperation : UInt32 {
     /// subtract the op region from the first region
     case difference = 0
     /// intersect the two regions
@@ -489,7 +489,6 @@ public enum RegionOperation: Int32 {
     
     internal static func fromNative (_ x: sk_region_op_t) -> RegionOperation
     {
-        return RegionOperation.init (rawValue: x.rawValue)!
+        return RegionOperation.init (rawValue: sk_region_op_t.RawValue(x.rawValue))!
     }
-
 }

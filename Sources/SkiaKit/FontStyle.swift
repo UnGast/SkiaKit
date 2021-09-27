@@ -36,7 +36,7 @@ public final class FontStyle {
     /// Creates a new SKFontStyle with the specified weight, width and slant.
     public init (weight: FontStyleWeight, width: FontStyleWidth, slant: FontStyleSlant)
     {
-        handle = sk_fontstyle_new(weight.rawValue, width.rawValue, slant.toNative())
+        handle = sk_fontstyle_new(Int32(weight.rawValue), Int32(width.rawValue), slant.toNative())
         owns = true
     }
     
