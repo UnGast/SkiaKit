@@ -765,12 +765,12 @@ public final class Path {
         
         internal func toNative () -> sk_path_arc_size_t
         {
-            return sk_path_arc_size_t.init(rawValue)
+            return sk_path_arc_size_t.init(sk_path_arc_size_t.RawValue(rawValue))
         }
         
         internal static func fromNative (_ x : sk_path_arc_size_t) -> Size
         {
-            return Size.init(rawValue: x.rawValue)!
+            return Size.init(rawValue: Size.RawValue(x.rawValue))!
         }
     }
     
@@ -798,12 +798,12 @@ public final class Path {
         
         internal func toNative () -> sk_path_filltype_t
         {
-           return sk_path_filltype_t.init(rawValue)
+           return sk_path_filltype_t.init(sk_path_filltype_t.RawValue(rawValue))
         }
 
         internal static func fromNative (_ x: sk_path_filltype_t) -> FillType
         {
-           return FillType.init(rawValue: x.rawValue)!
+           return FillType.init(rawValue: FillType.RawValue(x.rawValue))!
         }
     }
 
@@ -830,12 +830,12 @@ public final class Path {
         
         internal func toNative () -> sk_path_convexity_t
         {
-           return sk_path_convexity_t.init(rawValue)
+           return sk_path_convexity_t.init(sk_path_convexity_t.RawValue(rawValue))
         }
 
         internal static func fromNative (_ x: sk_path_convexity_t) -> Convexity
         {
-           return Convexity.init(rawValue: x.rawValue)!
+           return Convexity.init(rawValue: Convexity.RawValue(x.rawValue))!
         }
     }
 
@@ -871,7 +871,7 @@ public final class Path {
         
         internal func toNative () -> sk_path_direction_t
         {
-            return sk_path_direction_t (rawValue)
+            return sk_path_direction_t (sk_path_direction_t.RawValue(rawValue))
         }
         
         internal static func fromNative (_ x: sk_path_direction_t) -> Direction
@@ -895,12 +895,12 @@ public final class Path {
         
         internal func toNative () -> sk_pathop_t
         {
-            return sk_pathop_t (rawValue)
+            return sk_pathop_t (sk_pathop_t.RawValue(rawValue))
         }
         
         internal static func fromNative (_ x: sk_pathop_t) -> Op
         {
-            return Op.init(rawValue: x.rawValue)!
+            return Op.init(rawValue: Op.RawValue(x.rawValue))!
         }
     }
     //sk_opbuilder_add

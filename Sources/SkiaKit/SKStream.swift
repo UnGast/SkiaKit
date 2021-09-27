@@ -163,7 +163,7 @@ public class SKStream {
      */
     public func seekAbsolute (_ position: Int) -> Bool
     {
-        sk_stream_move(handle, position)
+        sk_stream_move(handle, CLong(position))
     }
     
     /// Returns the starting address for the data. If this cannot be done, returns nil.

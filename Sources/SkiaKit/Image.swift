@@ -349,12 +349,12 @@ public final class Image {
 
         internal func toNative () -> sk_image_caching_hint_t
         {
-            return sk_image_caching_hint_t(rawValue: rawValue)
+            return sk_image_caching_hint_t(rawValue: sk_image_caching_hint_t.RawValue(rawValue))
         }
         
         internal static func fromNative (_ x: sk_image_caching_hint_t) -> CachingHint
         {
-            return CachingHint.init (rawValue: x.rawValue)!
+            return CachingHint.init (rawValue: CachingHint.RawValue(x.rawValue))!
         }
 
     }

@@ -281,7 +281,7 @@ public enum ClipOperation : UInt32 {
     
     internal func toNative () -> sk_clipop_t
     {
-        return sk_clipop_t.init(rawValue)
+        return sk_clipop_t.init(sk_clipop_t.RawValue(rawValue))
     }
     
     internal static func fromNative (_ x: sk_clipop_t) -> ClipOperation
@@ -463,7 +463,7 @@ public enum PixelGeometry : UInt32 {
     
     internal static func fromNative (_ x: sk_pixelgeometry_t) -> PixelGeometry
     {
-        return PixelGeometry.init (rawValue: sk_pixelgeometry_t.RawValue(x.rawValue))!
+        return PixelGeometry.init (rawValue: PixelGeometry.RawValue(x.rawValue))!
     }
 }
 
@@ -484,11 +484,11 @@ public enum RegionOperation : UInt32 {
     
     internal func toNative () -> sk_region_op_t
     {
-        return sk_region_op_t(rawValue: rawValue)
+        return sk_region_op_t(rawValue: sk_region_op_t.RawValue(rawValue))
     }
     
     internal static func fromNative (_ x: sk_region_op_t) -> RegionOperation
     {
-        return RegionOperation.init (rawValue: sk_region_op_t.RawValue(x.rawValue))!
+        return RegionOperation.init (rawValue: RegionOperation.RawValue(x.rawValue))!
     }
 }

@@ -37,12 +37,12 @@ public final class Paint {
         
         internal func toNative () -> sk_paint_style_t
         {
-            return sk_paint_style_t.init(rawValue)
+            return sk_paint_style_t.init(sk_paint_style_t.RawValue(rawValue))
         }
        
         internal static func fromNative (_ x : sk_paint_style_t) -> Style
         {
-            return Style.init(rawValue: x.rawValue)!
+            return Style.init(rawValue: Style.RawValue(x.rawValue))!
         }
     }
     
@@ -69,12 +69,12 @@ public final class Paint {
         
         internal func toNative () -> sk_stroke_join_t
         {
-            return sk_stroke_join_t.init(rawValue)
+            return sk_stroke_join_t.init(sk_stroke_join_t.RawValue(rawValue))
         }
         
         internal static func fromNative (_ x: sk_stroke_join_t) -> StrokeJoin
         {
-            return StrokeJoin.init(rawValue: x.rawValue)!
+            return StrokeJoin.init(rawValue: StrokeJoin.RawValue(x.rawValue))!
         }
     }
 
@@ -134,12 +134,12 @@ public final class Paint {
         
         internal func toNative () -> sk_stroke_cap_t
         {
-            return sk_stroke_cap_t.init(rawValue)
+            return sk_stroke_cap_t.init(sk_stroke_cap_t.RawValue(rawValue))
         }
         
         internal static func fromNative (_ x: sk_stroke_cap_t) -> StrokeCap
         {
-            return StrokeCap.init(rawValue: x.rawValue)!
+            return StrokeCap.init(rawValue: StrokeCap.RawValue(x.rawValue))!
         }
     }
 
