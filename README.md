@@ -47,6 +47,8 @@ Read the tutorial on [skia.org](https://skia.org/docs/user/build/) and build thi
 
 I use the following build arguments, you might have to adjust them for your platform.
 
+Note that Python 2 is required to build Skia.
+
 <br>
 
 GN build args on Ubuntu:
@@ -90,6 +92,29 @@ skia_use_system_harfbuzz=false
 target_cpu="x64"
 extra_cflags=["-DHAVE_GETRANDOM", "-DHAVE_XLOCALE_H"]
 extra_cflags_cc=["-frtti"]
+```
+
+<br>
+
+GN build args on Windows:
+
+```
+is_official_build = true
+clang_win = "C:\Program Files\LLVM" # depends on where you have LLVM installed
+extra_cflags = ["/MD"] # link the C runtime dynamically instead of statically, otherwise won't work when linked with swift modules
+
+target_os = "win"
+target_cpu = "x64"
+
+skia_use_system_expat=false
+skia_use_system_libjpeg_turbo=false
+skia_use_system_libpng=false
+skia_use_system_libwebp=false
+skia_use_system_zlib=false
+skia_use_system_icu=false
+skia_use_harfbuzz=false
+
+skia_use_vulkan = true
 ```
 
 <br>
