@@ -4,16 +4,11 @@ import Foundation
 import PackageDescription
 
 var linkerSettings: [LinkerSetting] = [
-	.linkedLibrary("skia_skiakit"),
-    .linkedLibrary("freetype"),
-    .linkedLibrary("fontconfig"),
-    .linkedLibrary("z"),
+	.linkedLibrary("skia_skiakit")
 ]
 
 #if os(macOS)
 linkerSettings.append(.linkedLibrary("c++"))
-#else
-linkerSettings.append(.linkedLibrary("stdc++"))
 #endif
 
 let package = Package(
