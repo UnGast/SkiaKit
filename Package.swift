@@ -4,8 +4,15 @@ import Foundation
 import PackageDescription
 
 var linkerSettings: [LinkerSetting] = [
-	.linkedLibrary("skia_skiakit")
+	.linkedLibrary("skia_skiakit"),
 ]
+#if os(Linux) || os(macOS)
+linkerSettings.append(contentsOf: [
+	.linkedLibrary("freetype"),
+    .linkedLibrary("fontconfig"),
+    .linkedLibrary("z")
+])
+#endif
 
 #if os(macOS)
 linkerSettings.append(.linkedLibrary("c++"))
