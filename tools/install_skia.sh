@@ -18,5 +18,5 @@ fi
 
 DOWNLOAD_URL=https://github.com/UnGast/SkiaKit/releases/download/$2/libskia_$1.a
 curl -L $DOWNLOAD_URL --output libskia_skiakit.a
-cp libskia_skiakit.a /usr/lib/libskia_skiakit.a
+cp libskia_skiakit.a /usr/local/lib/libskia_skiakit.a
 rm libskia_skiakit.a
