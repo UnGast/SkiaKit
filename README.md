@@ -122,7 +122,7 @@ skia_use_vulkan = true
 <a name="step2"></a>
 ### **2. Making the binary visible to the linker**
 Ensure that your binary is named `libskia_skiakit.a`, if it is not, simply rename it.
-Then place your binary in `/usr/lib`. This will require root priviliges.
+Then place your binary in `/usr/local/lib`. This will require root priviliges.
 
 Now you should be able to use this package like a normal Swift package.
 
