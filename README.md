@@ -8,7 +8,7 @@
 
 SkiaKit is a wrapper library which maps Skia's C++ API to Swift via an intermediate C API.
 
-SkiaKit does not contain the actual Skia code. Instead it is linked to a prebuilt binary. You have to obtain this binary and place it somewhere the linker can find it (usually a system directory like /usr/lib).  
+SkiaKit does not contain the actual Skia code. Instead it is linked to a prebuilt binary. You have to obtain this binary and place it somewhere the linker can find it (usually a system directory like /usr/local/lib).  
 This is hopefully only a temporary requirement. When the Swift Package Manager supports shipping binaries with packages on all all platforms, manually installing Skia will not be necessary.
 
 <br>
